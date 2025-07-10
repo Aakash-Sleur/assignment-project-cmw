@@ -1,0 +1,593 @@
+// Variables
+$primary-color: #921feb;
+$secondary-color: #3b82f6;
+$accent-color: #ff6b35;
+$background-color: #FFFFFF;
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-900: #111827;
+$text-gray: #555555;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0px 0px 14px 0px #D3D3D326;;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin gradient-logo {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
+}
+
+
+// Hide scrollbar for Chrome, Safari and Opera
+*::-webkit-scrollbar {
+  display: none;
+}
+
+// Hide scrollbar for IE, Edge and Firefox
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+// Reset and base styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
+}
+
+body {
+  font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
+  font-weight: 600;
+  font-style: normal; // Change this from "Bold"
+  font-size: 16px;
+  letter-spacing: 0%;
+  background-color: $background-color;
+  color: $gray-900;
+  line-height: 1.6;
+}
+
+// Main app container
+.job-search-app {
+  min-height: 100vh;
+  background-color: $background-color;
+
+  // Search section
+  .search-section {
+    background-color: $white;
+    padding: 0 3rem 2rem;
+    margin-bottom: 2rem;
+
+    .search-grid {
+      .search-field {
+        position: relative;
+        border-right: 3px solid $gray-200;
+
+        // Override Mantine TextInput
+        .mantine-TextInput-root {
+          .mantine-TextInput-input {
+            padding: 12px 12px 12px 40px !important;
+            border: 0 !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            color: #686868 !important;
+            background-color: $white !important;
+
+            &:focus {
+              border: 1px solid #222222
+            }
+
+          }
+        }
+
+        // Override Mantine Select
+        .mantine-Select-root {
+          .mantine-Select-input {
+            padding: 12px 12px 12px 40px !important;
+            border: 0 !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            background-color: $white !important;
+            font-weight: 500;
+            color: #686868 !important;
+
+            &:focus {
+              border: 1px solid #222222
+            }
+          }
+        }
+      }
+
+      .salary-range-field {
+        .salary-range-container {
+          margin-left: 50px;
+
+          .salary-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: $gray-600;
+            font-weight: 500;
+          }
+
+          .salary-slider {
+            margin: 8px 0;
+
+            // Override Mantine RangeSlider
+            .mantine-RangeSlider-track {
+              background-color: $gray-200 !important;
+            }
+
+            .mantine-RangeSlider-bar {
+              background-color: #000000 !important;
+            }
+
+            .mantine-RangeSlider-thumb {
+              background-color: #000000 !important;
+              border-color: #000000 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // Navbar styles
+  .navbar-section {
+    padding: 1rem 0 0 0;
+    box-shadow: 0px 0px 20px 0px #7F7F7F26;
+
+    .navbar-container {
+      max-width: fit-content;
+      margin: 0 auto;
+      padding: 0 1rem;
+
+      @media (min-width: 768px) {
+        padding: 0 2rem;
+      }
+    }
+  }
+
+  // Override Mantine Paper component for navbar
+  .mantine-Paper-root.navbar-paper {
+    background-color: $white !important;
+    border-radius: 122px !important;
+    padding: 1rem 1.5rem !important;
+    margin: 1rem 0 2rem 0 !important;
+    box-shadow: 0px 0px 20px 0px #7F7F7F26;
+
+    .navbar-content {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 3rem;
+      align-items: center;
+
+      .logo-container {
+        .logo-image {
+          width: 44px;
+          height: 44.68px;
+        }
+      }
+
+      .navigation-links {
+        display: flex;
+        gap: 2rem;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+
+        .nav-item {
+          cursor: pointer;
+          transition: color 0.2s ease;
+          text-decoration: none;
+          color: #303030;
+          font-weight: 530;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  // Override Mantine Button for create jobs
+  .mantine-Button-root.create-jobs-btn {
+    background: linear-gradient(180deg, #A128FF 0%, #6100AD 113.79%);
+    color: $white !important;
+    border: none !important;
+    border-radius: 30px !important;
+    font-weight: 500 !important;
+
+    &:hover {
+      background-color: darken($primary-color, 10%) !important;
+    }
+  }
+
+  // Main content area
+  .main-content {
+    @media (min-width: 768px) {
+      padding: 0 2rem;
+    }
+
+    // Job cards grid
+    .jobs-grid {
+      margin: 0 auto;
+      // Override Mantine Grid
+      .mantine-Grid-root {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        place-items: center;
+        gap: 1.5rem;
+
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .job-card {
+        // Override Mantine Card
+        &.mantine-Card-root {
+          background-color: $white !important;
+          border-radius: 12px !important;
+          padding: 1.5rem !important;
+          width: 350px !important;
+          height: 380px !important;
+          @include card-shadow;
+          cursor: pointer !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+
+        .job-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 1rem;
+
+          .avatar-container {
+            background: linear-gradient(180deg, #FEFEFD 0%, #F1F1F1 100%);
+            box-shadow: 0px 0px 10.25px 0px #94949440;
+            border: 1px solid #FFFFFF;
+            height: 82px;
+            width: 83.46px;
+            border-radius: 13.18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+          }
+
+          .company-avatar {
+            // Override Mantine Avatar
+            &.mantine-Avatar-root {
+              width: 48px !important;
+              height: 48px !important;
+              border-radius: 50% !important;
+              @include flex-center;
+              font-size: 18px !important;
+              font-weight: 700 !important;
+              color: $white !important;
+            }
+          }
+
+          .time-badge {
+            // Override Mantine Badge
+            &.mantine-Badge-root {
+              background-color: #b0d9ff !important;
+              color: $black !important;
+              padding: 15px 10px !important;
+              border-radius: 10px !important;
+              font-size: 14px !important;
+              font-weight: 500;
+              gap: 10px;
+              font-style: Medium;
+              letter-spacing: 0%;
+              text-align: center;
+            }
+          }
+        }
+
+        .job-title {
+          font-size: 20px;
+          font-weight: 650;
+          color: $gray-900;
+          margin-bottom: 1rem;
+          line-height: 100%;
+        }
+
+        .job-metadata {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+
+          .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            color: $text-gray;
+
+            .metadata-icon {
+              width: 16px;
+              height: 16px;
+              color: $text-gray;
+            }
+          }
+        }
+
+        .job-description {
+          margin-bottom: 1.5rem;
+          flex-grow: 1;
+          padding: 0px 15px;
+          font-weight: 500;
+          color: $text-gray;
+          font-size: 14px;
+        }
+
+        .apply-button {
+          // Override Mantine Button
+          &.mantine-Button-root {
+            width: 100% !important;
+            background-color: #00AAFF !important;
+            color: $white !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+            font-size: 16px;
+            font-weight: 600 !important;
+            margin-top: auto !important;
+
+            &:hover {
+              background-color: darken($secondary-color, 10%) !important;
+            }
+
+            &:active {
+              transform: translateY(1px) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Modal styles
+  .create-job-modal {
+    padding: 20px;
+
+    .mantine-Modal-content {
+      padding: 1rem !important;
+    }
+
+    // Override Mantine Modal
+    .mantine-Modal-root {
+      .mantine-Modal-overlay {
+        background-color: rgba(0, 0, 0, 0.55) !important;
+        backdrop-filter: blur(3px) !important;
+      }
+
+      .mantine-Modal-content {
+        background-color: $white !important;
+        border-radius: 16px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+
+        .mantine-Modal-header {
+          justify-content: center !important;
+
+          .mantine-Modal-title {
+            font-size: 24px !important;
+            font-weight: 600 !important;
+            color: $gray-900 !important;
+            justify-content: center;
+          }
+        }
+
+        .mantine-Modal-body {
+          // Form field styles
+          .mantine-TextInput-root,
+          .mantine-Select-root,
+          .mantine-NumberInput-root,
+          .mantine-Textarea-root,
+          .mantine-DateInput-root {
+            .mantine-TextInput-input,
+            .mantine-Select-input,
+            .mantine-NumberInput-input,
+            .mantine-Textarea-input,
+            .mantine-DateInput-input {
+              padding: 12px !important;
+              border: 1px solid $gray-200 !important;
+              border-radius: 8px !important;
+              font-size: 14px !important;
+              font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
+              font-weight: 400;
+
+
+              &::placeholder {
+                font-family: var(--font-satoshi), sans-serif !important;
+                color: #9ca3af !important;
+                font-weight: 400 !important; // Changed from 500 to 400
+                font-size: 14px !important;
+              }
+
+              &:focus {
+                border: 1.5px solid #222222 !important;
+                outline: none !important;
+                box-shadow: none !important;
+              }
+            }
+          }
+
+          .mantine-Textarea-root {
+            .mantine-Textarea-input {
+              min-height: 120px !important;
+              resize: vertical !important;
+              font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
+            }
+          }
+
+          // Button styles in modal
+          .mantine-Button-root {
+            padding: 12px 24px !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            min-width: 120px !important;
+            transition: all 0.2s ease !important;
+            font-size: 14px !important;
+
+            &[data-variant="outline"] {
+              background-color: transparent !important;
+              color: $gray-700 !important;
+              border: 1px solid $gray-200 !important;
+
+              &:hover {
+                background-color: $gray-100 !important;
+                border-color: $gray-300 !important;
+              }
+            }
+
+            &:not([data-variant="outline"]) {
+              background-color: $secondary-color !important;
+              color: $white !important;
+              border: none !important;
+
+              &:hover {
+                background-color: darken($secondary-color, 10%) !important;
+              }
+
+              &:active {
+                transform: translateY(1px) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+// Global Mantine overrides
+.mantine-TextInput-input:focus,
+.mantine-Select-input:focus,
+.mantine-NumberInput-input:focus,
+.mantine-Textarea-input:focus,
+.mantine-DateInput-input:focus {
+  font-family: var(--font-satoshi), sans-serif !important;
+  border: 1.5px solid #222222 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.mantine-Select-root {
+  .mantine-Select-input {
+    &:focus {
+      border: 1px solid #222222;
+    }
+  }
+}
+
+.mantine-RangeSlider-root {
+  .mantine-RangeSlider-track {
+    background-color: $gray-200 !important;
+  }
+
+  .mantine-RangeSlider-bar {
+    background-color: $secondary-color !important;
+  }
+
+  .mantine-RangeSlider-thumb {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+  }
+}
+
+.mantine-Modal-header {
+  justify-content: center;
+}
+
+.custom-placeholder {
+  &::placeholder {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+  }
+}
