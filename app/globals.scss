@@ -87,9 +87,13 @@ body {
             padding: 12px 12px 12px 40px !important;
             border: 0 !important;
             border-radius: 8px !important;
-            font-size: 16px !important;
+            font-size: 12px !important;
             color: #686868 !important;
             background-color: $white !important;
+
+            &::placeholder {
+              font-size: 12px !important; // Add smaller placeholder size
+            }
 
             &:focus {
               border: 1px solid #222222
@@ -104,10 +108,14 @@ body {
             padding: 12px 12px 12px 40px !important;
             border: 0 !important;
             border-radius: 8px !important;
-            font-size: 16px !important;
+            font-size: 12px !important;
             background-color: $white !important;
             font-weight: 500;
             color: #686868 !important;
+
+            &::placeholder {
+              font-size: 12px !important; // Add smaller placeholder size
+            }
 
             &:focus {
               border: 1px solid #222222
@@ -417,7 +425,7 @@ body {
               padding: 12px !important;
               border: 1px solid $gray-200 !important;
               border-radius: 8px !important;
-              font-size: 14px !important;
+              font-size: 12px !important;
               font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
               font-weight: 400;
 
@@ -426,7 +434,7 @@ body {
                 font-family: var(--font-satoshi), sans-serif !important;
                 color: #9ca3af !important;
                 font-weight: 400 !important; // Changed from 500 to 400
-                font-size: 14px !important;
+                font-size: 12px !important;
               }
 
               &:focus {
@@ -442,6 +450,11 @@ body {
               min-height: 120px !important;
               resize: vertical !important;
               font-family: var(--font-satoshi), sans-serif; // Use the CSS variable
+              font-size: 12px !important; // Add this for textarea input text
+            }
+
+            &::placeholder {
+              font-size: 11px !important; // Add this for textarea placeholder
             }
           }
 
@@ -590,4 +603,12 @@ body {
     font-size: 10px !important;
     font-weight: 500 !important;
   }
+}
+
+.filled {
+  border: 1.5px solid #222222;
+  border-radius: 8px;
+  box-shadow: none !important;
+  outline: none !important;
+
 }

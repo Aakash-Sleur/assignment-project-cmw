@@ -19,16 +19,41 @@ export function getHoursAgo(postedAt: string | Date): string {
     }
 }
 
-export function convertLinesToBulletPoints(text: string): string[] {
-    const result_test = text.length > 100
-                    ? text.slice(0, 100) + "..."
-                    : text;
-    return result_test
-        .split('\n')                     // Split by newlines
-        .map(line => line.trim())        // Remove leading/trailing whitespace
-        .filter(line => line.length > 0) // Skip empty lines
+export function convertLinesToBulletPoints(
+    text: string,
+    maxWords: number = 14,
+    addEllipsis: boolean = true
+): string[] {
+    if (!text) return [];
 
+    const lines = text
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean); // removes empty lines
+
+    const result: string[] = [];
+    let wordCount = 0;
+
+    for (const line of lines) {
+        const words = line.split(/\s+/); // handles multiple spaces
+        const lineWordCount = words.length;
+
+        if (wordCount + lineWordCount <= maxWords) {
+            result.push(line);
+            wordCount += lineWordCount;
+        } else {
+            const remaining = maxWords - wordCount;
+            if (remaining > 0) {
+                result.push(words.slice(0, remaining).join(' ') + (addEllipsis ? '...' : ''));
+            }
+            break;
+        }
+    }
+
+    return result;
 }
+
+
 
 
 export function formatSalary(value: number): string {

@@ -217,8 +217,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
             <Stack gap="lg" style={{padding: "20px 10px 10px"}}>
                 <Grid gutter="md">
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Job Title
                             </Text>
                             <TextInput
@@ -228,6 +228,15 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                     handleInputChange("jobTitle", e.currentTarget.value)
                                 }
                                 radius="md"
+                                className={jobForm.jobTitle != "" ? "filled" : ""}
+                                styles={{
+                                    input: {
+                                        fontSize: '13px',
+                                        '&::placeholder': {
+                                            fontSize: '11px',
+                                        }
+                                    }
+                                }}
                                 size="md"
                                 style={{fontWeight: 400}}
                                 error={errors.jobTitle}
@@ -235,8 +244,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                         </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Company Name
                             </Text>
                             <TextInput
@@ -247,7 +256,15 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                 }
                                 radius="md"
                                 size="md"
-
+                                className={jobForm.companyName != "" ? "filled" : ""}
+                                styles={{
+                                    input: {
+                                        fontSize: '14px',
+                                        '&::placeholder': {
+                                            fontSize: '14px',
+                                        }
+                                    }
+                                }}
                                 style={{
                                     fontWeight: 400, '&::placeholder': {
                                         fontSize: '10px', // Adjust the font size as needed
@@ -261,8 +278,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
 
                 <Grid gutter="md">
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Location
                             </Text>
                             <Select
@@ -274,6 +291,15 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                 }
                                 radius="md"
                                 size="md"
+                                className={jobForm.location != "" ? "filled" : ""}
+                                styles={{
+                                    input: {
+                                        fontSize: '14px',
+                                        '&::placeholder': {
+                                            fontSize: '14px',
+                                        }
+                                    }
+                                }}
                                 data={locations}
                                 style={{fontWeight: 400}}
                                 error={errors.location}
@@ -281,8 +307,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                         </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Job Type
                             </Text>
                             <Select
@@ -292,8 +318,16 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                 onChange={(value) =>
                                     handleInputChange("jobType", value || "")
                                 }
-                                radius="md"
+                                styles={{
+                                    input: {
+                                        fontSize: '14px',
+                                        '&::placeholder': {
+                                            fontSize: '14px',
+                                        }
+                                    }
+                                }} radius="md"
                                 size="md"
+                                className={jobForm.jobType != "" ? "filled" : ""}
                                 data={jobTypes}
                                 style={{fontWeight: 400}}
                                 error={errors.jobType}
@@ -304,8 +338,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
 
                 <Grid gutter="md">
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Salary Range
                             </Text>
                             <Group gap="md">
@@ -317,8 +351,17 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                         handleInputChange("salaryMin", Number(value) || 0)
                                     }
                                     radius="md"
+                                    className={jobForm.salaryMin != null ? "filled" : ""}
                                     size="md"
                                     hideControls
+                                    styles={{
+                                        input: {
+                                            fontSize: '14px',
+                                            '&::placeholder': {
+                                                fontSize: '14px',
+                                            }
+                                        }
+                                    }}
                                     thousandSeparator=","
                                     prefix="₹"
                                     flex={1}
@@ -332,9 +375,18 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                     onChange={(value) =>
                                         handleInputChange("salaryMax", Number(value) || 0)
                                     }
+                                    className={jobForm.salaryMax != null ? "filled" : ""}
                                     radius="md"
                                     size="md"
                                     hideControls
+                                    styles={{
+                                        input: {
+                                            fontSize: '14px',
+                                            '&::placeholder': {
+                                                fontSize: '14px',
+                                            }
+                                        }
+                                    }}
                                     thousandSeparator=","
                                     prefix="₹"
                                     flex={1}
@@ -345,8 +397,8 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                         </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Stack style={{gap: "1px"}}>
-                            <Text size="sm" fw={600} c="dark">
+                        <Stack style={{gap: "3px"}}>
+                            <Text size="sm" fw={500} c="dark">
                                 Application Deadline
                             </Text>
                             <DateInput
@@ -361,6 +413,15 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                     }
                                     handleInputChange("applicationDeadline", dateValue);
                                 }}
+                                className={jobForm.applicationDeadline != null ? "filled" : ""}
+                                styles={{
+                                    input: {
+                                        fontSize: '14px',
+                                        '&::placeholder': {
+                                            fontSize: '14px',
+                                        }
+                                    }
+                                }}
                                 radius="md"
                                 size="md"
                                 style={{fontWeight: 400}}
@@ -370,7 +431,7 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                     </Grid.Col>
                 </Grid>
 
-                <Stack style={{gap: "1px"}}>
+                <Stack style={{gap: "3px"}}>
                     <Text size="md" fw={600} c="dark">
                         Job Description
                     </Text>
@@ -383,8 +444,17 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                         radius="md"
                         size="lg"
                         autosize
+                        className={jobForm.jobDescription != "" ? "filled" : ""}
                         minRows={6}
                         maxRows={6}
+                        styles={{
+                            input: {
+                                fontSize: '14px',
+                                '&::placeholder': {
+                                    fontSize: '13px',
+                                }
+                            }
+                        }}
                         style={{fontWeight: 400}}
                         error={errors.jobDescription}
                     />
@@ -427,7 +497,7 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                         disabled={isSubmitting}
                     >
                         <span>Publish</span>
-                        <MdOutlineKeyboardDoubleArrowRight fontWeight={800} size={16} style={{marginLeft: "8px"}} />
+                        <MdOutlineKeyboardDoubleArrowRight fontWeight={800} size={16} style={{marginLeft: "8px"}}/>
                     </Button>
                 </Group>
             </Stack>
