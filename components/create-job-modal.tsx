@@ -451,7 +451,7 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                             input: {
                                 fontSize: '14px',
                                 '&::placeholder': {
-                                    fontSize: '13px',
+                                    fontSize: '14px',
                                 }
                             }
                         }}

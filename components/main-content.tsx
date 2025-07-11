@@ -122,20 +122,35 @@ const MainContentSection = ({refresh, title, jobType, salaryRange, location}: Pr
                                 {/* Header with Logo and Time */}
                                 <div className="job-header">
                                     <div className="avatar-container">
-                                        <Avatar size="lg" radius="xl">
-                                            <img
-                                                src={
-                                                    companyLogos[
-                                                        job.company_name as keyof typeof companyLogos
-                                                        ] || ""
-                                                }
-                                                alt={job.company_name}
-                                                style={{
-                                                    objectFit: "contain",
-                                                    width: "100%",
-                                                }}
-                                            />
-                                        </Avatar>
+                                            {companyLogos[job.company_name as keyof typeof companyLogos] ? (
+                                                <Avatar size="lg" radius="xl">
+                                                    <img
+                                                        src={companyLogos[job.company_name as keyof typeof companyLogos]}
+                                                        alt={job.company_name}
+                                                        style={{
+                                                            objectFit: "contain",
+                                                            width: "100%",
+                                                        }}
+                                                    />
+                                                </Avatar>
+                                            ) : (
+                                                <Avatar size="lg" radius="xl" color="gray">
+                                                    <span style={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        justifyContent: "center",
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        fontWeight: "bold",
+                                                        fontSize: "1.5rem",
+                                                        color: "#fff",
+                                                        background: "#888",
+                                                        borderRadius: "50%"
+                                                    }}>
+                                                        {job.company_name?.charAt(0)?.toUpperCase() || "?"}
+                                                    </span>
+                                                </Avatar>
+                                            )}
                                     </div>
                                     <Badge
                                         variant="light"
