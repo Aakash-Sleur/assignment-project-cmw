@@ -231,9 +231,9 @@ const CreateJobModal = ({opened, close, setRefetch}: CreateJobModalProps) => {
                                 className={jobForm.jobTitle != "" ? "filled" : ""}
                                 styles={{
                                     input: {
-                                        fontSize: '13px',
+                                        fontSize: '14px',
                                         '&::placeholder': {
-                                            fontSize: '11px',
+                                            fontSize: '14px',
                                         }
                                     }
                                 }}
