@@ -87,12 +87,12 @@ body {
             padding: 12px 12px 12px 40px !important;
             border: 0 !important;
             border-radius: 8px !important;
-            font-size: 12px !important;
+            font-size: 16px !important;
             color: #686868 !important;
             background-color: $white !important;
 
             &::placeholder {
-              font-size: 12px !important; // Add smaller placeholder size
+              font-size: 16px !important; // Add smaller placeholder size
             }
 
             &:focus {
@@ -108,13 +108,13 @@ body {
             padding: 12px 12px 12px 40px !important;
             border: 0 !important;
             border-radius: 8px !important;
-            font-size: 12px !important;
+            font-size: 16px !important;
             background-color: $white !important;
             font-weight: 500;
             color: #686868 !important;
 
             &::placeholder {
-              font-size: 12px !important; // Add smaller placeholder size
+              font-size: 16px !important; // Add smaller placeholder size
             }
 
             &:focus {
